@@ -95,7 +95,10 @@ We can run the application by running the `org.example.Main` class:
 
 ```shell script
 cd build/classes/java/main
-java org.example.Main
+```
+```shell script
+java -cp "../../../install/hello-gradle/lib/hello-gradle-0.1.0-SNAPSHOT.jar;../../../install/hello-
+gradle/lib/jansi-2.4.0.jar" org.example.Main
 ```
 
 This will print `Hello World!` to the console (in red).
@@ -120,6 +123,10 @@ We can fix this by adding the following lines to the `build.gradle` file:
 jar {
     manifest {
         attributes 'Main-Class': 'org.example.Main'
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 ```
@@ -193,11 +200,15 @@ jar {
     manifest {
         attributes 'Main-Class': mainClassName
     }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 ```
 
 Instead of defining a local variable, we could also define the `mainClassName` variable in a `gradle.properties` file,
-located in the project's root folder.:
+located in the project's root folder:
 
 ```properties
 mainClassName=org.example.Main
