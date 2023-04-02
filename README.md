@@ -267,6 +267,16 @@ located in the project's root folder:
 mainClassName=org.example.Main
 ```
 
+Now verify that the application still works by running the `./gradlew run` task.
+```shell
+./gradlew run
+```
+Also Verify that you can build and run your application:
+```shell
+./gradlew build
+java -jar build/libs/hello-gradle-0.1.0-SNAPSHOT.jar
+```
+
 #### 2.5. Develop Multi-Language Support in the Application
 
 We are going to use the first parameter of the application to specify the language that the application should greet the
