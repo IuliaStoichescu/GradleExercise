@@ -181,7 +181,11 @@ jar {
 }
 ```
 
-Try running the application again:
+Try building and then running the application again:
+
+```shell script
+./gradlew build
+```
 
 ```shell script
 java -jar build/libs/hello-gradle-0.1.0-SNAPSHOT.jar
