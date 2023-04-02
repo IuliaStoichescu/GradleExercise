@@ -31,8 +31,6 @@ Run the following command in the terminal to build the application:
 ```
 
 #### 1.2 Run the application
-##### 2.4.1 Running the Main class
-
 We can run the application by running the `org.example.Main` class:
 
 ```shell script
@@ -119,6 +117,7 @@ We can run the application by running the `org.example.Main` class:
 ```shell script
 cd build/classes/java/main
 ```
+
 ```shell script
 java org.example.Main
 ```
@@ -129,13 +128,8 @@ This will however produce an error message:
 Error: ClassNotFoundException org.fusesource.jansi.AnsiConsole not found
 ```
 
-This is because the Jansi library is not on the classpath. We can fix this by adding the required JAR files to the classpath:
-    
-```shell script
-java -cp build/libs/hello-gradle-0.1.0-SNAPSHOT.jar:build/libs/jansi-2.4.0.jar org.example.Main
-```
-
-This will print `Hello World!` to the console (in red).
+This is because the `Jansi` library is not on the classpath. We can fix this by adding the required JAR files to the
+classpath, which we will do in the next section
 
 ##### 2.4.2 We can run the application by running the JAR file directly:
 
@@ -158,14 +152,34 @@ jar {
     manifest {
         attributes 'Main-Class': 'org.example.Main'
     }
+}
+```
 
+Now, when we run the `./gradlew build` task, the `MANIFEST.MF` file will be updated with the `Main-Class` attribute.
+
+Try running the application again:
+
+```shell script
+java -jar build/libs/hello-gradle-0.1.0-SNAPSHOT.jar
+```
+
+However this will produce the same error message as before, becuase Jansi is not on the classpath:
+```shell script
+Error: ClassNotFoundException org.fusesource.jansi.AnsiConsole not found
+```
+
+To add the Jansi library to the classpath, we can add the following lines to the `build.gradle` file:
+
+```groovy
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.example.Main'
+    }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 ```
-
-Now, when we run the `./gradlew build` task, the `MANIFEST.MF` file will be updated with the `Main-Class` attribute.
 
 Try running the application again:
 
