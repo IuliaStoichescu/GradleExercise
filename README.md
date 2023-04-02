@@ -298,7 +298,7 @@ Create the following files in the `src/main/resources` folder:
 ```properties
 greeting.text=Hallo
 greeting.color=black
-person.text=freunde
+person.text=Freunde
 person.color=yellow
 punctuation.text=?!
 punctuation.color=red
