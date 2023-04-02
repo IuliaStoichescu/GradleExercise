@@ -21,6 +21,29 @@ We will display use Gradle to build the application, manage resources and manage
 8. Push your local repository to the remote repository on Github.
 9. Verify that your files are on Github.
 
+#### 1.1 Build the application
+
+To build the application we need to run the `build` task.
+Run the following command in the terminal to build the application:
+
+```shell script
+./gradlew build
+```
+
+#### 1.2 Run the application
+##### 2.4.1 Running the Main class
+
+We can run the application by running the `org.example.Main` class:
+
+```shell script
+cd build/classes/java/main
+```
+```shell script
+java org.example.Main
+```
+
+This should print out `Hello World!` to the console.
+
 ### 2. Develop & Build the Hello Gradle application
 
 First, we need to see how we can color the text that we print to the console.
@@ -97,8 +120,19 @@ We can run the application by running the `org.example.Main` class:
 cd build/classes/java/main
 ```
 ```shell script
-java -cp "../../../install/hello-gradle/lib/hello-gradle-0.1.0-SNAPSHOT.jar;../../../install/hello-
-gradle/lib/jansi-2.4.0.jar" org.example.Main
+java org.example.Main
+```
+
+This will however produce an error message:
+
+```shell script
+Error: ClassNotFoundException org.fusesource.jansi.AnsiConsole not found
+```
+
+This is because the Jansi library is not on the classpath. We can fix this by adding the required JAR files to the classpath:
+    
+```shell script
+java -cp build/libs/hello-gradle-0.1.0-SNAPSHOT.jar:build/libs/jansi-2.4.0.jar org.example.Main
 ```
 
 This will print `Hello World!` to the console (in red).
