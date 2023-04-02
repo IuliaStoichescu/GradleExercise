@@ -449,7 +449,7 @@ To install a distribution of the application, we will use the `application` plug
 ```
 
 This will create a `build/install` folder, which will contain the distribution of the application.
-The build.install folder will contain the following structure:
+The `build/install` folder will contain the following structure:
 
 ```txt
 build/install
