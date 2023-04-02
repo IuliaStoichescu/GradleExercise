@@ -49,11 +49,19 @@ This will install the Jansi library and allow us to use the `Ansi` class to prin
 In the org.example.Main class, add the following lines to the `main` method:
 
 ```java
-public static void main(String[]args){
+package org.example;
+
+import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
+
+public class Main {
+
+    public static void main(String[]args){
         AnsiConsole.systemInstall();
         System.out.println(Ansi.ansi().fg(Ansi.Color.RED).a("Hello World!").reset());
         AnsiConsole.systemUninstall();
-        }
+    }
+}
 ```
 
 This will print the text `Hello World!` in red to the console.
@@ -255,7 +263,7 @@ punctuation.text=!!!
 punctuation.color=blue
 ```
 
-Create a PropertyUtils class in the `org.example` package. This class will be used to load the properties files and get
+Create a PropertiesUtils class in the `org.example` package. This class will be used to load the properties files and get
 the values for the components of the greeting.
 
 ```java
@@ -368,7 +376,7 @@ public class Main {
 By default, the application will use the `en` language. If a language is specified as a parameter, the application will
 use that language.
 
-#### 3 Install a distribution af the application and be able to run the project from the command line
+#### 3. Install a distribution af the application and be able to run the project from the command line
 
 To install a distribution of the application, we will use the `application` plugin, which uses the `distribution` plugin:
 
