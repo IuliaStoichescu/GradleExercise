@@ -450,6 +450,17 @@ public class Main {
 By default, the application will use the `en` language. If a language is specified as a parameter, the application will
 use that language.
 
+Verify that the application works by running the `./gradlew run` task. Use all languages as parameters and see if the application prompts the correct greeting:
+```shell
+./gradlew run --args="ro"
+```
+
+Also verify that the application works by building and running the jar file:
+```shell
+./gradlew build
+java -jar build/libs/hello-gradle-0.1.0-SNAPSHOT.jar ro
+```
+
 #### 3. Install a distribution of the application and be able to run the project from the command line
 
 To install a distribution of the application, we will use the `application` plugin, which uses the `distribution` plugin:
