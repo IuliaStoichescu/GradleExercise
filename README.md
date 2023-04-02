@@ -180,6 +180,7 @@ jar {
     }
 }
 ```
+This will create a `fat` JAR file, which contains all the dependencies.
 
 Try building and then running the application again:
 
@@ -222,7 +223,7 @@ the `org.example.Main` class as the main class of the application.
 
 Now, when we run the `./gradlew run` task, the application will be run.
 
-This will print `Hello World!` to the console (in red).
+This will print `Hello World!` to the console (but NOT in red).
 
 ##### 2.4.4 Cleaning the build.gradle file
 
@@ -439,7 +440,7 @@ public class Main {
 By default, the application will use the `en` language. If a language is specified as a parameter, the application will
 use that language.
 
-#### 3. Install a distribution af the application and be able to run the project from the command line
+#### 3. Install a distribution of the application and be able to run the project from the command line
 
 To install a distribution of the application, we will use the `application` plugin, which uses the `distribution` plugin:
 
